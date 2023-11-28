@@ -9,15 +9,11 @@ jobs:
     name: Build alpine-base
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.0
+      - uses: actions/checkout@v4.1.1
 
-      - name: login to docker hub
-        uses: docker/login-action@v3.0.0
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - uses: chainguard-dev/actions/apko-build@main
+      - uses: chainguard-images/actions/apko-publish@main
         with:
           config: alpine-base.yaml
+          generic-user: ${{ secrets.DOCKER_USERNAME }}
+          generic-pass: ${{ secrets.DOCKER_PASSWORD }}
           tag: "fsouza/alpine-base:latest"
