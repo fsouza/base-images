@@ -16,4 +16,4 @@ jobs:
           config: alpine-base.yaml
           generic-user: ${{ secrets.DOCKER_USERNAME }}
           generic-pass: ${{ secrets.DOCKER_PASSWORD }}
-          tag: "fsouza/alpine-base:latest"
+          tag: "docker.io/fsouza/alpine-base:latest"
