@@ -9,7 +9,7 @@ jobs:
     name: Build alpine-base
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.0
+      - uses: actions/checkout@v4.1.1
 
       - name: login to docker hub
         uses: docker/login-action@v3.0.0
