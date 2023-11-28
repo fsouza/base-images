@@ -1,0 +1,23 @@
+name: Build alpine-base
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build alpine-base
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.0
+
+      - name: login to docker hub
+        uses: docker/login-action@v3.0.0
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - uses: chainguard-dev/actions/apko-build@main
+        with:
+          config: alpine-base.yaml
+          tag: "fsouza/alpine-base:latest"
